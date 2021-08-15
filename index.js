@@ -1,17 +1,33 @@
-import morgan from 'morgan';
-import cors from 'cors';
-import { json, urlencoded } from 'body-parser';
+const dotenv = require('dotenv');
+const sgMail = require('@sendgrid/mail');
+const express = require('express');
+const { json, urlencoded } = require('body-parser');
 
 const app = express();
 
-app.use(cors());
-app.use(json());
+dotenv.config();
+sgMail.setApiKey(process.env.SENDGRID_KEY);
 app.use(urlencoded({ extended: true }));
-app.use(morgan('dev'));
+app.use(json());
 
 app.post('/sendemail', (req, res) => {
-    console.log(req.body);
-    res.send({ message: 'ok'});
+    const emailData = req.body;
+    const email = {
+        to: emailData.to,
+        from: emailData.from, 
+        subject: emailData.subject,
+        text: emailData.text,
+        html: emailData.html
+    }
+    sgMail.send(email)
+    .then(() => {
+        console.log("Email sent!")
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+
+    res.send({ message: 'Message sent!'});
 });
 
 app.listen('3000', () => {
