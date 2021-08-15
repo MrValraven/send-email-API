@@ -10,6 +10,10 @@ sgMail.setApiKey(process.env.SENDGRID_KEY);
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
+app.get('/sendemail', (req, res) => {
+    res.send({message: "Hello World"})
+})
+
 app.post('/sendemail', (req, res) => {
     const emailData = req.body;
     const email = {
@@ -21,15 +25,10 @@ app.post('/sendemail', (req, res) => {
     }
     sgMail.send(email)
     .then(() => {
-        console.log("Email sent!")
+        res.send({ message: 'Email sent!'});
     })
     .catch((err) => {
+        res.send({ message: 'Error! No email was sent'});
         console.log(err)
     });
-
-    res.send({ message: 'Message sent!'});
-});
-
-app.listen('3000', () => {
-    console.log("Server is on port 3000")
 });

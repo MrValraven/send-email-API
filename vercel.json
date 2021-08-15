@@ -1,0 +1,13 @@
+{
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/sendemail",
+            "methods": ["POST"],
+            "dest": "/api/index.js"
+        }
+    ]
+}
