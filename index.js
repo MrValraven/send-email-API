@@ -10,8 +10,8 @@ sgMail.setApiKey(process.env.SENDGRID_KEY);
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
-app.get('/sendemail', (req, res) => {
-    res.send({message: "Hello World"})
+app.get('/', (req, res) => {
+    res.send("Hello World");
 })
 
 app.post('/sendemail', (req, res) => {
