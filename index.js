@@ -32,3 +32,7 @@ app.post('/sendemail', (req, res) => {
         console.log(err)
     });
 });
+
+app.listen(3000, () => {
+    console.log("server is running");
+})
