@@ -14,6 +14,8 @@ app.use(cors(
     { 
         origin: 'https://wwww.tiagocostadev.com',
         methods: ["GET","HEAD","POST","PUT","DELETE","CONNECT","OPTIONS","TRACE","PATCH"],
+        allowedHeaders: ['Content-Type'],
+        preflightContinue: false,
         optionsSuccessStatus: 200
     }));
 app.options('*', cors()) 
