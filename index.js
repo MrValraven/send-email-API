@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const sgMail = require('@sendgrid/mail');
 const express = require('express');
 const { json, urlencoded } = require('body-parser');
+const cors = require('cors')
 
 const app = express();
 
@@ -9,6 +10,7 @@ dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 app.use(urlencoded({ extended: true }));
 app.use(json());
+app.use(cors({ origin: "https://www.tiagocostadev.com/", methods: ["GET", "POST"], crendentials: true}));
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
