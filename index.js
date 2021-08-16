@@ -16,7 +16,7 @@ app.use(cors(
         methods: ["GET","HEAD","POST","PUT","DELETE","CONNECT","OPTIONS","TRACE","PATCH"],
         optionsSuccessStatus: 200
     }));
-app.options('/', cors()) 
+app.options('*', cors()) 
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
