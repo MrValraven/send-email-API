@@ -34,6 +34,7 @@ app.post('/sendemail', (req, res) => {
         res.send({ message: 'Error! No email was sent'});
         console.log(err)
     });
+    res.json({message: "Sucess!"})
 });
 
 app.listen(PORT, () => {
