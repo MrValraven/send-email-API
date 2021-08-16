@@ -9,6 +9,7 @@ dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 app.use(urlencoded({ extended: true }));
 app.use(json());
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.send("Hello World");
@@ -33,6 +34,6 @@ app.post('/sendemail', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("server is running");
 })
