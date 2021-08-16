@@ -12,10 +12,9 @@ app.use(urlencoded({ extended: true }));
 app.use(json());
 app.use(cors(
     { 
-        origin: 'https://www.tiagocostadev.com/',
-        methods: ["GET","HEAD","POST","PUT","DELETE","CONNECT","OPTIONS","TRACE","PATCH"],
+        origin: 'https://www.tiagocostadev.com',
+        methods: ["GET","POST"],
         allowedHeaders: ['Content-Type'],
-        preflightContinue: false,
         optionsSuccessStatus: 200
     }));
     
