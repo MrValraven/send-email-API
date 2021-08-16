@@ -10,7 +10,7 @@ dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 app.use(urlencoded({ extended: true }));
 app.use(json());
-app.use(cors({ origin: 'https://wwww.tiagocostadev.com', methods: ["GET", "POST", "OPTIONS"]}));
+app.use(cors({ origin: 'https://wwww.tiagocostadev.com/*', methods: ["GET", "POST", "OPTIONS"]}));
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
