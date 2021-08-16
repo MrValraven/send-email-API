@@ -13,11 +13,12 @@ app.use(json());
 app.use(cors(
     { 
         origin: 'https://www.tiagocostadev.com',
-        methods: ["GET","POST"],
+        methods: ["GET","POST", "OPTIONS"],
         allowedHeaders: ['Content-Type'],
         optionsSuccessStatus: 200
     }));
     
+app.options('*', cors())
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
